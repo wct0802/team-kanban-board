@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>团队任务看板 · Team Kanban Board</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-logo">▦</span>
+      <div class="brand-text">
+        <h1>团队任务看板</h1>
+        <p class="brand-sub">Team Kanban Board</p>
+      </div>
+    </div>
+    <div class="header-tools">
+      <span class="stats" id="stats">共 0 个任务</span>
+      <button class="btn btn-primary" id="btn-add" type="button">＋ 新建任务</button>
+    </div>
+  </header>
+
+  <main class="board" id="board">
+    <section class="column" data-status="todo">
+      <header class="column-head">
+        <h2><i class="dot dot-todo"></i>待办</h2>
+        <span class="count" data-count="todo">0</span>
+      </header>
+      <ul class="task-list" data-status="todo"></ul>
+    </section>
+
+    <section class="column" data-status="doing">
+      <header class="column-head">
+        <h2><i class="dot dot-doing"></i>进行中</h2>
+        <span class="count" data-count="doing">0</span>
+      </header>
+      <ul class="task-list" data-status="doing"></ul>
+    </section>
+
+    <section class="column" data-status="done">
+      <header class="column-head">
+        <h2><i class="dot dot-done"></i>已完成</h2>
+        <span class="count" data-count="done">0</span>
+      </header>
+      <ul class="task-list" data-status="done"></ul>
+    </section>
+  </main>
+</body>
+</html>

@@ -270,3 +270,14 @@ body {
     padding: 12px 16px;
   }
 }
+
+/* 列宽自适应：窄屏折成单列 */
+@media (max-width: 640px) {
+  .column-head h2 {
+    font-size: 13px;
+  }
+
+  .app-header {
+    gap: 10px;
+  }
+}

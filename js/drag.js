@@ -51,8 +51,9 @@
       });
 
       column.addEventListener('dragleave', function (event) {
-        // 在子元素之间移动时也会触发 dragleave，需要过滤掉
-        if (!column.contains(event.relatedTarget)) {
+        // 在子元素之间移动时也会触发 dragleave；
+        // relatedTarget 为 null（拖到窗口外）时同样需要清理高亮
+        if (!event.relatedTarget || !column.contains(event.relatedTarget)) {
           column.classList.remove(OVER_CLASS);
         }
       });

@@ -11,6 +11,8 @@
   var emptyTip = document.getElementById('empty-tip');
   var inputTitle = document.getElementById('input-title');
   var inputDesc = document.getElementById('input-desc');
+  var inputPriority = document.getElementById('input-priority');
+  var filterPriority = document.getElementById('filter-priority');
 
   var PRIORITY_TEXT = { high: '高', medium: '中', low: '低' };
 
@@ -33,6 +35,7 @@
       : '';
     return `
       <li class="task" draggable="true" data-id="${task.id}">
+        <span class="badge badge-${task.priority}">${PRIORITY_TEXT[task.priority] || "中"}</span>
         <p class="task-title">${escapeHtml(task.title)}</p>
         ${desc}
         <footer class="task-foot">
@@ -46,6 +49,11 @@
     TaskStore.STATUSES.forEach(function (status) {
       var list = board.querySelector('.task-list[data-status="' + status + '"]');
       var items = TaskStore.byStatus(status);
+      if (filterPriority.value !== 'all') {
+        items = items.filter(function (task) {
+          return task.priority === filterPriority.value;
+        });
+      }
       list.innerHTML = items.length
         ? items.map(cardHtml).join('')
         : '<li class="task-empty">暂无任务，可从其他列拖入</li>';
@@ -80,10 +88,12 @@
       inputTitle.focus();
       return;
     }
-    TaskStore.add(title, inputDesc.value);
+    TaskStore.add(title, inputDesc.value, inputPriority.value);
     dialog.close();
     render();
   });
+
+  filterPriority.addEventListener('change', render);
 
   board.addEventListener('click', function (event) {
     var btn = event.target.closest('.task-del');

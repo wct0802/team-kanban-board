@@ -402,3 +402,60 @@ body {
 .column-over .task-list {
   min-height: 80px;
 }
+
+/* ---------- 优先级徽章与筛选 ---------- */
+
+.badge {
+  display: inline-block;
+  margin-bottom: 2px;
+  padding: 1px 7px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.badge-high {
+  background: #fdecec;
+  color: #d64545;
+}
+
+.badge-medium {
+  background: #fff5e6;
+  color: #c07b18;
+}
+
+.badge-low {
+  background: #eaf3ff;
+  color: #3b6ef6;
+}
+
+.task:has(.badge-high) {
+  border-left-color: #d64545;
+}
+
+.task:has(.badge-medium) {
+  border-left-color: var(--todo);
+}
+
+.task:has(.badge-low) {
+  border-left-color: var(--doing);
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.filter select {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 12.5px;
+}

@@ -51,11 +51,12 @@
     });
   }
 
-  function add(title, description) {
+  function add(title, description, priority) {
     var task = {
       id: uid(),
       title: String(title).trim(),
       description: String(description || '').trim(),
+      priority: PRIORITIES.indexOf(priority) > -1 ? priority : 'medium',
       status: 'todo',
       createdAt: Date.now()
     };

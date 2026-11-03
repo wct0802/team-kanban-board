@@ -87,6 +87,11 @@ python -m http.server 8000
 | 成员B | 前端开发 B | 新建任务、删除任务（`js/store.js`、`js/app.js`） |
 | 成员C | 前端开发 C | 拖拽任务卡片更新状态（`js/drag.js`） |
 
+## 分支保护
+
+`main` 分支已开启保护：禁止直接 push，必须通过 PR 合入，且至少 1 人审查通过（Approve）后才能合并。
+本项目由项目负责人统一执行 Squash and merge。
+
 ## 常见问题
 
 - **打开页面空白？** 检查浏览器控制台，确认 `js/` 下三个脚本都已加载（顺序为 store → drag → app）。

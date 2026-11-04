@@ -32,7 +32,7 @@
       ? '<p class="task-desc">' + escapeHtml(task.description) + '</p>'
       : '';
     return `
-      <li class="task" data-id="${task.id}">
+      <li class="task" draggable="true" data-id="${task.id}">
         <p class="task-title">${escapeHtml(task.title)}</p>
         ${desc}
         <footer class="task-foot">
@@ -99,4 +99,10 @@
 
   TaskStore.load();
   render();
+
+  // 拖拽移动：drag.js 只识别拖放动作，状态更新仍交给数据层
+  KanbanDrag.init(board, function (id, status) {
+    TaskStore.move(id, status);
+    render();
+  });
 })();
